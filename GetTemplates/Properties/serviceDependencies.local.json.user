@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "restored": true,
+      "restoreTime": "2023-04-28T03:59:40.8127213Z"
+    },
+    "secrets1": {
+      "restored": true,
+      "restoreTime": "2023-04-28T03:59:19.7230162Z"
+    }
+  },
+  "parameters": {
+    "mssql1.subscriptionId": {
+      "Name": "mssql1.subscriptionId",
+      "Type": "subscription",
+      "Value": "c506e574-d44b-42f5-abf7-61f8d82f72f8"
+    },
+    "mssql1.resourceGroupName": {
+      "Name": "mssql1.resourceGroupName",
+      "Type": "resourceGroup",
+      "Value": "DesignProject"
+    }
+  }
+}
