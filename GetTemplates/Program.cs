@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using GetTemplates.Context;
 using GetTemplates.Models;
+using GetTemplates.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,7 +30,10 @@ builder.Services.AddDbContext<TemplateContext>(options =>
 //    builder.WithOrigins("https://localhost:7209/api").AllowAnyMethod().AllowAnyHeader();
 //}));
 
+builder.Services.Configure<TemplateDatabaseSettings>(
+    builder.Configuration.GetSection("RoverClubDatabase"));
 
+builder.Services.AddSingleton<TempaltesService>();
 
 var app = builder.Build();
 
