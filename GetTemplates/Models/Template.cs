@@ -11,7 +11,7 @@ namespace GetTemplates.Models
         public string? Id { get; set; }
 
         [BsonElement("templateId")]
-        public int templateID { get; set; }
+        public int? templateID { get; set; }
 
         [BsonElement("templateName")]
         public string templateName { get; set; }

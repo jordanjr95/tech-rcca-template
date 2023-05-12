@@ -19,13 +19,65 @@ namespace GetTemplates.Controllers
         private readonly TempaltesService _templatesService;
 
         public TemplatesController(TempaltesService tempaltesService) =>
-        _templatesService = tempaltesService;
+            _templatesService = tempaltesService;
 
         // GET: api/Templates
         [HttpGet]
         public async Task<List<Template>> Get() =>
             await _templatesService.GetAsync();
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Template>> Get(int id)
+        {
+            var template = await _templatesService.GetAsync(id);
+
+            if (template is null)
+            {
+                return NotFound();
+            }
+
+            return template;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateTemplate(Template newTemplate)
+        {
+            await _templatesService.CreateAsync(newTemplate);
+
+            return CreatedAtAction("GetTemplate", new { id = newTemplate.templateID }, newTemplate);
+        }
+
+        [HttpDelete("deleteTemplate/{id}")]
+        public async Task<IActionResult> DeleteTemplate(int id)
+        {
+            var template = await _templatesService.GetAsync(id);
+
+            if (template is null)
+            {
+                return NotFound();
+            }
+
+            await _templatesService.DeleteAsync(id);
+
+            return NoContent();
+        }
+
+        [HttpPost("updateTemplate/{id}")]
+        public async Task<IActionResult> UpdateTemplate(int id, Template updatedTemplate)
+        {
+            var template = await _templatesService.GetAsync(id);
+
+            if (template is null)
+            {
+                return NotFound();
+            }
+
+            updatedTemplate.templateID = template.templateID;
+
+            await _templatesService.UpdateAsync(id, updatedTemplate);
+
+            return NoContent();
+        }
 
         //// GET: api/Templates/5
         //[HttpGet("{id}")]
