@@ -1,8 +1,14 @@
 bin/
 obj/
+/GetTemplates/bin*
+/GetTemplates/bin/*
+/GetTemplates/obj*
+/GetTemplates/obj/*
 bin/*
 obj/*
 bin\
 obj\
 bin\*
 obj\*
+
+/GetTemplates/bin
