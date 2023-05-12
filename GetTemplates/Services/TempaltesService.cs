@@ -25,13 +25,13 @@ namespace GetTemplates.Services
         public async Task<List<Template>> GetAsync() =>
             await _templatesCollection.Find(_ => true).ToListAsync();
 
-        public async Task<Template?> GetAsync(int id) =>
+        public async Task<Template?> GetAsync(string id) =>
             await _templatesCollection.Find(x => x.templateID == id).FirstOrDefaultAsync();
 
-        public async Task DeleteAsync(int id) =>
+        public async Task DeleteAsync(string id) =>
             await _templatesCollection.DeleteOneAsync(x => x.templateID == id);
 
-        public async Task UpdateAsync(int id, Template updatedTemplate) =>
+        public async Task UpdateAsync(string id, Template updatedTemplate) =>
             await _templatesCollection.ReplaceOneAsync(x => x.templateID == id, updatedTemplate);
 
         public async Task CreateAsync(Template newTemplate) =>

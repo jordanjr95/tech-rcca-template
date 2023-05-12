@@ -12,3 +12,5 @@ bin\*
 obj\*
 
 /GetTemplates/bin
+/.vs/GetTemplates/FileContentIndex/merges
+/.vs/GetTemplates/FileContentIndex/*

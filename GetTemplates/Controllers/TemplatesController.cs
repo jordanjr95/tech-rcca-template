@@ -27,7 +27,7 @@ namespace GetTemplates.Controllers
             await _templatesService.GetAsync();
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Template>> Get(int id)
+        public async Task<ActionResult<Template>> Get(string id)
         {
             var template = await _templatesService.GetAsync(id);
 
@@ -44,11 +44,11 @@ namespace GetTemplates.Controllers
         {
             await _templatesService.CreateAsync(newTemplate);
 
-            return CreatedAtAction("GetTemplate", new { id = newTemplate.templateID }, newTemplate);
+            return NoContent();
         }
 
         [HttpDelete("deleteTemplate/{id}")]
-        public async Task<IActionResult> DeleteTemplate(int id)
+        public async Task<IActionResult> DeleteTemplate(string id)
         {
             var template = await _templatesService.GetAsync(id);
 
@@ -63,7 +63,7 @@ namespace GetTemplates.Controllers
         }
 
         [HttpPost("updateTemplate/{id}")]
-        public async Task<IActionResult> UpdateTemplate(int id, Template updatedTemplate)
+        public async Task<IActionResult> UpdateTemplate(string id, Template updatedTemplate)
         {
             var template = await _templatesService.GetAsync(id);
 

@@ -8,10 +8,8 @@ namespace GetTemplates.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? Id { get; set; }
-
-        [BsonElement("templateId")]
-        public int? templateID { get; set; }
+        [BsonElement("Id")]
+        public string? templateID { get; set; }
 
         [BsonElement("templateName")]
         public string templateName { get; set; }
