@@ -40,11 +40,11 @@ namespace GetTemplates.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTemplate(Template newTemplate)
+        public async Task<ActionResult<Template>> CreateTemplate(Template newTemplate)
         {
-            await _templatesService.CreateAsync(newTemplate);
+            var template = await _templatesService.CreateAsync(newTemplate);
 
-            return NoContent();
+            return template;
         }
 
         [HttpDelete("deleteTemplate/{id}")]
@@ -63,7 +63,7 @@ namespace GetTemplates.Controllers
         }
 
         [HttpPost("updateTemplate/{id}")]
-        public async Task<IActionResult> UpdateTemplate(string id, Template updatedTemplate)
+        public async Task<ActionResult<Template>> UpdateTemplate(string id, Template updatedTemplate)
         {
             var template = await _templatesService.GetAsync(id);
 
@@ -76,7 +76,7 @@ namespace GetTemplates.Controllers
 
             await _templatesService.UpdateAsync(id, updatedTemplate);
 
-            return NoContent();
+            return updatedTemplate;
         }
 
         //// GET: api/Templates/5

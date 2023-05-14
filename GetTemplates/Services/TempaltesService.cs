@@ -34,7 +34,9 @@ namespace GetTemplates.Services
         public async Task UpdateAsync(string id, Template updatedTemplate) =>
             await _templatesCollection.ReplaceOneAsync(x => x.templateID == id, updatedTemplate);
 
-        public async Task CreateAsync(Template newTemplate) =>
+        public async Task<Template> CreateAsync(Template newTemplate) {
             await _templatesCollection.InsertOneAsync(newTemplate);
+            return newTemplate;
+        }
     }
 }
